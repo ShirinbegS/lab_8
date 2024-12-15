@@ -1,19 +1,12 @@
-# Настройка логирования
-def log_calls(func):
-    def wrapper(*args, **kwargs):
-        result = func(*args, **kwargs)
-        print(func.__name__)
-        return result
-    return wrapper
+def log(f):
+    def d(x,y):
+        r = f(x, y)
+        print(f"log: {f.__name__}({x}+{y}) = {r}")
+        return r
+    return d
+def add(x, y): return x + y
 
-# Пример использования
-def example_function(x, y):
-    return x + y
-
-# Тест вызова
-if __name__ == "__main__":
-    example_function(5, 10)
-
-print(log_calls(1, 2))
+f = log(add)
+print(f(1, 2))
 print(f(3, 4))
 print(f(128, 256))
