@@ -1,12 +1,12 @@
 def log(f):
     def d(x,y):
-        r = f(x, y)
-        print(f"log: {f.__name__}({x}+{y}) = {r}")
-        return r
+        print(f"log: {f.__name__}({x}+{y}) = {f(x,y)}")
+        return f(x,y)
     return d
-def add(x, y): return x + y
+@log
+def add(x, y): 
+    return x + y
 
-f = log(add)
-print(f(1, 2))
-print(f(3, 4))
-print(f(128, 256))
+print(add(1, 2))
+print(add(3, 4))
+print(add(128, 256))
